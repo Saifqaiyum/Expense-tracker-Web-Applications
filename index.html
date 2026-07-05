@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Expense Tracker — Glass UI</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="app">
+    <header class="app-header">
+      <div>
+        <h1>Expense Tracker</h1>
+        <p class="subtitle">Glassmorphism • Light Theme • LocalStorage • Chart</p>
+      </div>
+
+      <div class="balance-card glass">
+        <p class="muted">Current Balance</p>
+        <h2 id="balance">₹0.00</h2>
+        <div class="balance-row">
+          <div>
+            <p class="muted">Income</p>
+            <p id="income" class="green">₹0.00</p>
+          </div>
+          <div>
+            <p class="muted">Expense</p>
+            <p id="expense" class="red">₹0.00</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="controls">
+      <form id="txForm" class="glass form">
+        <div class="row">
+          <input type="text" id="title" placeholder="Title (e.g., Salary, Groceries)" required>
+          <input type="number" id="amount" placeholder="Amount" step="0.01" required>
+        </div>
+
+        <div class="row">
+          <select id="type" required>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+          <input type="date" id="date">
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submitBtn" class="btn">Add Transaction</button>
+          <button type="button" id="cancelEdit" class="btn btn-ghost hidden">Cancel Edit</button>
+        </div>
+      </form>
+
+      <div class="glass chart-card">
+        <canvas id="summaryChart" width="300" height="300"></canvas>
+      </div>
+    </section>
+
+    <section class="transactions">
+      <div class="tx-header">
+        <h3>Transactions</h3>
+        <input type="search" id="search" placeholder="Search transactions...">
+      </div>
+
+      <ul id="txList" class="tx-list glass">
+        <!-- transactions injected here -->
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <p>Built with ❤️ • Save your data locally in this browser</p>
+      <div class="footer-actions">
+        <button id="clearAll" class="btn btn-danger">Clear All</button>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
